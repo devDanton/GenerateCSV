@@ -14,7 +14,7 @@ MESES_PT = {
 def classificar_fatura(texto):
     """Identifica de qual banco é a fatura baseado no texto da primeira página."""
     texto_upper = texto.upper()
-    if "NUBANK" in texto_upper or "OLÁ, DANTON.\nESTA É A SUA FATURA DE" in texto_upper or "NU PAGAMENTOS" in texto_upper:
+    if "NUBANK" in texto_upper or "OLÁ, DANTON.\nESTA É A SUA FATURA DE" in texto_upper or "OLÁ, LAUREN.\nESTA É A SUA FATURA DE" in texto_upper or "NU PAGAMENTOS" in texto_upper:
         return "Nubank"
     elif "PICPAY" in texto_upper:
         return "PicPay"
@@ -77,8 +77,7 @@ def formatar_valor(valor_str):
     
     try:
         f_val = float(v)
-        # Se era negativo na origem, reaplica o sinal no float
-        if is_negative:
+        if is_negative == False:
             f_val = -f_val
             
         # Formata explicitamente para string americana
